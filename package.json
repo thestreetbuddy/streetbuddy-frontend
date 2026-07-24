@@ -1,0 +1,28 @@
+{
+  "name": "streetbuddy-admin-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^9.1.2",
+    "@mui/x-date-pickers": "^9.6.0",
+    "@vitejs/plugin-react": "latest",
+    "axios": "latest",
+    "dayjs": "^1.11.21",
+    "lucide-react": "^1.20.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-dropzone": "^15.0.0",
+    "react-phone-input-2": "^2.15.1",
+    "react-router-dom": "latest",
+    "react-select": "^5.10.2",
+    "vite": "latest"
+  }
+}

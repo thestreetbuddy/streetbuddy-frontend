@@ -1,0 +1,238 @@
+.crud-page {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.crud-form,
+.table-card {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.table-card {
+  overflow-x: auto;
+}
+
+.crud-form h2,
+.table-card h2 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.crud-form label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.crud-form input,
+.crud-form textarea,
+.crud-form select {
+  width: 100%;
+  height: 54px;
+  padding: 14px 16px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.7rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+}
+
+.crud-form textarea {
+  resize: vertical;
+  height: auto;
+  min-height: 80px;
+}
+
+.crud-form input:focus,
+.crud-form textarea:focus,
+.crud-form select:focus {
+  border-color: #ff8c42;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
+}
+
+.crud-form select:invalid,
+.crud-form select option[value=""] {
+  color: #9ca3b8;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+}
+
+.form-actions,
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-actions button,
+.table-actions button {
+  padding: 10px 14px;
+  color: var(--text-sidebar-active);
+  background: var(--accent-gradient);
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-button);
+}
+
+.table-actions .icon-button {
+  padding: 10px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-actions button:disabled {
+  background: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.form-actions .secondary-button {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  box-shadow: none;
+}
+
+/* .table-actions .danger-button {
+  background: var(--bg-primary);
+} */
+
+.table-actions .danger-button {
+  background: #2b211d !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+.table-actions .danger-button svg {
+  color: #ffffff !important;
+  stroke: currentColor;
+}
+
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-primary);
+  vertical-align: middle;
+}
+
+tbody tr {
+  height: 80px;
+}
+
+th {
+  color: var(--text-secondary);
+  /* background: var(--bg-table-header); */
+  font-size: 14px;
+}
+
+td {
+  color: var(--text-primary);
+}
+
+.empty-table {
+  padding: 28px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: #6b7280;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+
+  .crud-form,
+  .table-card {
+    padding: 18px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-image-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+}
+
+.toggle-row {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.custom-dropdown {
+  position: relative;
+  z-index: 100;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}

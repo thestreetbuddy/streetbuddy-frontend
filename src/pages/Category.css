@@ -1,0 +1,30 @@
+/* src/styles/Category.css */
+
+.image-preview-container {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image-preview-container p {
+  margin: 0;
+  font-weight: 600;
+  color: #403832;
+}
+
+.category-image-preview.large,
+.image-placeholder.large {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid #eadfd6;
+}
+
+.image-placeholder.large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+}

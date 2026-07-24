@@ -1,0 +1,151 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 138, 61, 0.16);
+  backdrop-filter: blur(14px);
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.header-left {
+  min-width: 0;
+}
+
+.header h1 {
+  margin: 0;
+  overflow: hidden;
+  font-size: 22px;
+  color: #201b17;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-button {
+  display: none;
+}
+
+.menu-button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.menu-button {
+  color: #201b17;
+  background: #fff0e4;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 7px 12px 7px 7px;
+  color: #201b17;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 999px;
+}
+
+.profile-avatar {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(145deg, #ff5a2a, #ffae4f);
+  border-radius: 50%;
+  box-shadow: 0 10px 22px rgba(255, 90, 42, 0.2);
+}
+
+.profile-avatar svg,
+.logout-icon-button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.profile-text {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+}
+
+.profile-text strong {
+  max-width: 130px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-text small {
+  max-width: 150px;
+  overflow: hidden;
+  color: #7c6f65;
+  font-size: 12px;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout-icon-button {
+  display: grid;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  color: #ffffff;
+  background: #201b17;
+  border: 0;
+  border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    gap: 10px;
+    padding: 14px 18px;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+
+  .profile-text {
+    display: none;
+  }
+
+  .profile-button {
+    padding: 6px;
+  }
+}

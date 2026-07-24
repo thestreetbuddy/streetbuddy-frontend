@@ -1,0 +1,69 @@
+.admin-layout {
+  --admin-sidebar-width: 260px;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 0;
+  background:
+    linear-gradient(rgba(255, 251, 247, 0.86), rgba(255, 251, 247, 0.94)),
+    url('../assets/streetbuddy-pattern.png') right top / 720px auto no-repeat,
+    #fff8f2;
+}
+
+.admin-main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - var(--admin-sidebar-width));
+  min-width: 0;
+  margin-left: var(--admin-sidebar-width);
+  overflow-x: hidden;
+}
+
+.admin-content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.admin-content > section {
+  width: 100%;
+  max-width: 1600px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 1280px) {
+  .admin-content > section {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .admin-content > section {
+    padding: 18px;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: block;
+    background: rgba(32, 27, 23, 0.42);
+    border: 0;
+  }
+}
