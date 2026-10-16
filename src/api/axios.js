@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-const api = axios.create({
-  // baseURL: 'http://localhost:4000',
-  baseURL: 'http://64.227.186.8:4000',
+const rawBaseURL =
+  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_BASE_URL) ||
+  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL) ||
+  'https://api.thestreetbuddy.com';
 
+const baseURL = rawBaseURL.replace(/\/+$/, '');
+
+const api = axios.create({
+  baseURL,
 });
 
 let activeRequests = 0;
