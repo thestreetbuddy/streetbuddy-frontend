@@ -10,6 +10,7 @@ import Users from './pages/Users.jsx';
 import EditCategory from './pages/EditCategory.jsx';
 import EditCity from './pages/EditCity.jsx';
 import AdminProfile from './pages/AdminProfile.jsx';
+import UserActivity from './pages/UserActivity.jsx';
 
 // A wrapper for routes that require authentication and layout
 function MainLayout() {
@@ -31,6 +32,8 @@ function MainLayout() {
         <Route path="/cities" element={<Cities />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/user-activity" element={<UserActivity />} />
+        <Route path="/analytics/activity" element={<Navigate to="/user-activity" replace />} />
         <Route path="/cities/edit/:id" element={<EditCity />} />
         <Route path="/categories/edit/:id" element={<EditCategory />} />
         <Route path="/places" element={<Places />} />

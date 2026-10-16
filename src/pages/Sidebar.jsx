@@ -6,6 +6,8 @@ import {
   Building2,
   Shapes,
   MapPin,
+  Users,
+  Activity,
   UserCircle,
   ChevronDown,
 } from 'lucide-react';
@@ -36,6 +38,20 @@ function Sidebar({ isOpen, closeSidebar }) {
             <LayoutDashboard size={20} />
           </span>
           <span>Dashboard</span>
+        </NavLink>
+
+        <NavLink to="/users" onClick={closeSidebar}>
+          <span className="nav-icon">
+            <Users size={20} />
+          </span>
+          <span>Users</span>
+        </NavLink>
+
+        <NavLink to="/user-activity" onClick={closeSidebar}>
+          <span className="nav-icon">
+            <Activity size={20} />
+          </span>
+          <span>User Activity</span>
         </NavLink>
 
         <button
