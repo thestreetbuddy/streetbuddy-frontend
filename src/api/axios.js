@@ -9,6 +9,11 @@ const baseURL = rawBaseURL.replace(/\/+$/, '');
 
 const api = axios.create({
   baseURL,
+  headers: {
+    'Cache-Control': 'no-cache',
+    Pragma: 'no-cache',
+    Expires: '0',
+  },
 });
 
 let activeRequests = 0;
