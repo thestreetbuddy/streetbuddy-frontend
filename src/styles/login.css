@@ -278,6 +278,116 @@
   transform: none;
 }
 
+/* Toast Notification Popup */
+.toast-message {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 320px;
+  max-width: 90vw;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  animation: toastSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@keyframes toastSlideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -24px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.toast-message.error {
+  background: rgba(254, 226, 226, 0.98);
+  color: #991b1b;
+  border: 1px solid #f87171;
+}
+
+.toast-message.success {
+  background: rgba(220, 252, 231, 0.98);
+  color: #166534;
+  border: 1px solid #4ade80;
+}
+
+.toast-message .toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.toast-message.error .toast-icon {
+  color: #dc2626;
+}
+
+.toast-message.success .toast-icon {
+  color: #16a34a;
+}
+
+.toast-message .toast-text {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.toast-message .toast-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  opacity: 0.7;
+  color: inherit;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.toast-message .toast-close:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* Inline form alert */
+.login-inline-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  animation: fadeIn 0.25s ease;
+}
+
+.login-inline-error svg {
+  flex-shrink: 0;
+  color: #dc2626;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 1024px) {
   .login-page {
     flex-direction: column;

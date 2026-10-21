@@ -18,11 +18,10 @@ function MainLayout() {
   const location = useLocation();
 
   if (!token) {
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to. This allows us to send them along to that page after they
-    // log in, which is a nicer user experience than dropping them off on the
-    // homepage.
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    // Redirect them to the /login or /admin/login page, but save the current location they were
+    // trying to go to.
+    const loginTarget = location.pathname.startsWith('/admin') ? '/admin/login' : '/login';
+    return <Navigate to={loginTarget} state={{ from: location }} replace />;
   }
 
   return (
@@ -38,6 +37,8 @@ function MainLayout() {
         <Route path="/categories/edit/:id" element={<EditCategory />} />
         <Route path="/places" element={<Places />} />
         <Route path="/admin-profile" element={<AdminProfile />} />
+        <Route path="/admin/dashboard" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         {/* Add a catch-all for any other routes inside the layout */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
@@ -72,6 +73,7 @@ function App() {
 
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/admin/login" element={<Login />} />
         <Route path="/*" element={<MainLayout />} />
       </Routes>
     </>

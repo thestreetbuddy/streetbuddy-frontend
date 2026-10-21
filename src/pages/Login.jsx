@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { loginAdmin } from '../api/authApi';
-import { Eye, EyeOff, MapPin, Compass, Camera, Send } from 'lucide-react';
+import { Eye, EyeOff, MapPin, Compass, Camera, Send, AlertCircle, CheckCircle2, X } from 'lucide-react';
 import '../styles/login.css';
 
 function getErrorMessage(apiError) {
-  const backendMessage = apiError.response?.data?.message;
+  const data = apiError?.response?.data;
+  const backendMessage = data?.message || data?.error;
 
   if (Array.isArray(backendMessage)) {
     return backendMessage.join(', ');
   }
 
-  if (typeof backendMessage === 'string') {
+  if (typeof backendMessage === 'string' && backendMessage.trim()) {
     return backendMessage;
   }
 
@@ -19,11 +20,16 @@ function getErrorMessage(apiError) {
     return JSON.stringify(backendMessage);
   }
 
-  return 'Something went wrong. Please try again.';
+  if (apiError?.message && typeof apiError.message === 'string') {
+    return apiError.message;
+  }
+
+  return 'Invalid credentials. Please check your email and password.';
 }
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -65,11 +71,11 @@ function Login() {
     try {
       const response = await loginAdmin(formData);
       const token =
-        response.data.token ||
-        response.data.accessToken ||
-        response.data.access_token ||
-        response.data.data?.token ||
-        response.data.data?.accessToken;
+        response.data?.token ||
+        response.data?.accessToken ||
+        response.data?.access_token ||
+        response.data?.data?.token ||
+        response.data?.data?.accessToken;
 
       if (!token) {
         setToast({
@@ -85,7 +91,8 @@ function Login() {
         type: 'success',
       });
 
-      navigate('/dashboard'); // Ab direct aur turant navigate hoga
+      const destination = location.state?.from?.pathname || '/dashboard';
+      navigate(destination, { replace: true });
     } catch (apiError) {
       console.log('LOGIN ERROR', apiError);
       console.log('RESPONSE', apiError.response);
@@ -102,7 +109,22 @@ function Login() {
 
   return (
     <div className="login-page">
-      {toast.message && <div className={`toast-message ${toast.type}`}>{toast.message}</div>}
+      {toast.message && (
+        <div className={`toast-message ${toast.type}`} role="alert">
+          <span className="toast-icon">
+            {toast.type === 'error' ? <AlertCircle size={20} /> : <CheckCircle2 size={20} />}
+          </span>
+          <span className="toast-text">{toast.message}</span>
+          <button
+            type="button"
+            className="toast-close"
+            onClick={() => setToast({ message: '', type: '' })}
+            aria-label="Close notification"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
 
       <div className="login-bg-animations">
         <span className="bg-icon icon-1"><MapPin /></span>
@@ -137,6 +159,13 @@ function Login() {
                 <p>Login to manage cities, categories, and places.</p>
               </div>
             </div>
+
+            {toast.message && toast.type === 'error' && (
+              <div className="login-inline-error">
+                <AlertCircle size={18} />
+                <span>{toast.message}</span>
+              </div>
+            )}
             <label>
               Email Address
               <input

@@ -59,9 +59,23 @@ api.interceptors.response.use(
   },
   (error) => {
     stopLoader();
-    if (error.response?.status === 401) {
+
+    const requestUrl = error.config?.url || '';
+    const isLoginRequest = requestUrl.includes('/login');
+    const isAlreadyOnLoginPage =
+      typeof window !== 'undefined' &&
+      (window.location.pathname.endsWith('/login') ||
+        window.location.pathname.includes('/admin/login') ||
+        window.location.pathname === '/login');
+
+    // Only redirect to login if user was authorized and session expired on an internal route
+    if (error.response?.status === 401 && !isLoginRequest && !isAlreadyOnLoginPage) {
       localStorage.removeItem('token');
-      window.location.href = '/login';
+      const loginPath =
+        typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')
+          ? '/admin/login'
+          : '/login';
+      window.location.href = loginPath;
     }
 
     return Promise.reject(error);
