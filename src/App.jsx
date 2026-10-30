@@ -11,6 +11,7 @@ import EditCategory from './pages/EditCategory.jsx';
 import EditCity from './pages/EditCity.jsx';
 import AdminProfile from './pages/AdminProfile.jsx';
 import UserActivity from './pages/UserActivity.jsx';
+import FinancialDashboard from './pages/FinancialDashboard.jsx';
 
 // A wrapper for routes that require authentication and layout
 function MainLayout() {
@@ -33,6 +34,10 @@ function MainLayout() {
         <Route path="/users" element={<Users />} />
         <Route path="/user-activity" element={<UserActivity />} />
         <Route path="/analytics/activity" element={<Navigate to="/user-activity" replace />} />
+        <Route path="/financial" element={<FinancialDashboard />} />
+        <Route path="/analytics/financial" element={<Navigate to="/financial" replace />} />
+        <Route path="/revenue" element={<Navigate to="/financial" replace />} />
+        <Route path="/admin/financial" element={<Navigate to="/financial" replace />} />
         <Route path="/cities/edit/:id" element={<EditCity />} />
         <Route path="/categories/edit/:id" element={<EditCategory />} />
         <Route path="/places" element={<Places />} />

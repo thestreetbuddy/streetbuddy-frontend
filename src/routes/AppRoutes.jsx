@@ -7,6 +7,8 @@ import Cities from '../pages/Cities.jsx';
 import Categories from '../pages/Categories.jsx';
 import Places from '../pages/Places.jsx';
 import Users from '../pages/Users.jsx';
+import UserActivity from '../pages/UserActivity.jsx';
+import FinancialDashboard from '../pages/FinancialDashboard.jsx';
 import AdminProfile from '../pages/AdminProfile.jsx';
 
 function AppRoutes() {
@@ -67,6 +69,38 @@ function AppRoutes() {
             </Layout>
           </ProtectedRoute>
         }
+      />
+
+      <Route
+        path="/user-activity"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <UserActivity />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/financial"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <FinancialDashboard />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/analytics/financial"
+        element={<Navigate to="/financial" replace />}
+      />
+
+      <Route
+        path="/revenue"
+        element={<Navigate to="/financial" replace />}
       />
 
       <Route

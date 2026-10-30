@@ -8,6 +8,7 @@ import {
   MapPin,
   Users,
   Activity,
+  BadgeIndianRupee,
   UserCircle,
   ChevronDown,
 } from 'lucide-react';
@@ -32,7 +33,6 @@ function Sidebar({ isOpen, closeSidebar }) {
       </div>
 
       <nav className="sidebar-nav">
-
         <NavLink to="/dashboard" onClick={closeSidebar}>
           <span className="nav-icon">
             <LayoutDashboard size={20} />
@@ -54,6 +54,13 @@ function Sidebar({ isOpen, closeSidebar }) {
           <span>User Activity</span>
         </NavLink>
 
+        <NavLink to="/financial" onClick={closeSidebar}>
+          <span className="nav-icon">
+            <BadgeIndianRupee size={20} />
+          </span>
+          <span>Financial & Revenue</span>
+        </NavLink>
+
         <button
           className={`explore-btn ${isExploreActive ? 'active' : ''}`}
           onClick={() => setExploreOpen(!exploreOpen)}
@@ -73,7 +80,6 @@ function Sidebar({ isOpen, closeSidebar }) {
 
         {exploreOpen && (
           <div className="submenu">
-
             <NavLink
               to="/cities"
               onClick={closeSidebar}
@@ -106,7 +112,6 @@ function Sidebar({ isOpen, closeSidebar }) {
               <MapPin size={18} />
               <span>Places</span>
             </NavLink>
-
           </div>
         )}
 
@@ -116,7 +121,6 @@ function Sidebar({ isOpen, closeSidebar }) {
           </span>
           <span>Admin Profile</span>
         </NavLink>
-
       </nav>
     </aside>
   );

@@ -9,6 +9,10 @@ const pageTitles = {
   '/categories': 'Categories',
   '/places': 'Places',
   '/users': 'Users',
+  '/user-activity': 'User Activity & Analytics',
+  '/financial': 'Financial & Revenue Analytics',
+  '/analytics/financial': 'Financial & Revenue Analytics',
+  '/revenue': 'Financial & Revenue Analytics',
   '/admin-profile': 'Admin Profile',
 };
 
