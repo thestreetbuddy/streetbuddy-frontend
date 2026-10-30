@@ -142,12 +142,15 @@ function FinancialDashboard() {
         setTransactions(list);
 
         const pag = data.pagination || {};
+        const totalRecords = pag.total_records ?? list.length;
+        const totalPages = pag.total_pages ?? (Math.ceil(totalRecords / limit) || 1);
+
         setPagination((prev) => ({
           ...prev,
           page: pag.page || page,
           limit: pag.limit || limit,
-          total_records: pag.total_records ?? list.length,
-          total_pages: pag.total_pages ?? Math.ceil((pag.total_records ?? list.length) / limit) || 1,
+          total_records: totalRecords,
+          total_pages: totalPages,
         }));
 
         setFilteredTotals(data.filtered_totals || {});
@@ -334,4 +337,3 @@ function FinancialDashboard() {
 }
 
 export default FinancialDashboard;
-
