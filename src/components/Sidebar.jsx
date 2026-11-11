@@ -8,6 +8,7 @@ import {
   MapPin,
   Users,
   Activity,
+  Footprints,
   BadgeIndianRupee,
   UserCircle,
   ChevronDown,
@@ -52,6 +53,13 @@ function Sidebar({ isOpen, closeSidebar }) {
             <Activity size={20} />
           </span>
           <span>User Activity</span>
+        </NavLink>
+
+        <NavLink to="/admin/visitor-analytics" onClick={closeSidebar}>
+          <span className="nav-icon">
+            <Footprints size={20} />
+          </span>
+          <span>Visitor Analytics</span>
         </NavLink>
 
         <NavLink to="/financial" onClick={closeSidebar}>

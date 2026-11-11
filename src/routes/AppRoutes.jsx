@@ -8,6 +8,7 @@ import Categories from '../pages/Categories.jsx';
 import Places from '../pages/Places.jsx';
 import Users from '../pages/Users.jsx';
 import UserActivity from '../pages/UserActivity.jsx';
+import VisitorAnalytics from '../pages/VisitorAnalytics.jsx';
 import FinancialDashboard from '../pages/FinancialDashboard.jsx';
 import AdminProfile from '../pages/AdminProfile.jsx';
 
@@ -77,6 +78,28 @@ function AppRoutes() {
           <ProtectedRoute>
             <Layout>
               <UserActivity />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/visitor-analytics"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <VisitorAnalytics />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/visitor-analytics"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <VisitorAnalytics />
             </Layout>
           </ProtectedRoute>
         }
